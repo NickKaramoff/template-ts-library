@@ -1,0 +1,47 @@
+language: node_js
+node_js:
+  - lts/dubnium
+  - lts/erbium
+cache: npm
+
+stages:
+  - test
+  - name: deploy
+    if: tag IS present
+
+install: npm install
+before_script:
+  - npm run build
+
+jobs:
+  include:
+    - stage: test
+      name: "Test"
+      script:
+        - npm run test && npm i -g codecov && codecov
+
+    - stage: deploy
+      name: Deploy to GitHub Releases
+      script: skip
+      deploy:
+        provider: releases
+        api_key:
+          secure: ~github-api-key~
+        file_glob: true
+        file: ./dist/**/*.js
+        skip_cleanup: true
+        draft: true
+        on:
+          tags: true
+
+    - stage: deploy
+      name: Deploy to NPM
+      script: skip
+      deploy:
+        provider: npm
+        email: nick@karamoff.ru
+        api_key:
+          secure: ~npm-api-key~
+        skip_cleanup: true
+        on:
+          tags: true

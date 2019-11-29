@@ -1,0 +1,6 @@
+dist
+dist_dev
+coverage
+.idea
+node_modules
+.vscode

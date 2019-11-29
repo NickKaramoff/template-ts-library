@@ -1,0 +1,67 @@
+{
+  "name": "~library-name~",
+  "version": "0.1.0",
+  
+  "description": "~library-description~",
+  "author": "~your-name~ <~your-email~>",
+  "license": "MIT",
+  "keywords": [
+    "~library-keyword~"
+  ],
+  "homepage": "https://github.com/~repo-path~",
+  
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/~repo-path~.git"
+  },
+  "bugs": {
+    "url": "https://github.com/~repo-path~/issues"
+  },
+  
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "src"
+  ],
+  "main": "./dist/~library-name~.umd.js",
+  "module": "./dist/~library-name~.esm.js",
+  "types": "./dist/~library-name~.d.ts",
+
+  "browserslist": [
+    ">=.5% or last 2 versions",
+    "not dead"
+  ],
+  "size-limit": [
+    {
+      "path": "./dist/~library-name~.umd.js",
+      "limit": "~library-desired-size~"
+    }
+  ],
+  
+  "scripts": {
+    "build": "rollup --config ./config/build/rollup.config.prod.js",
+    "dev": "rollup -w --config ./config/build/rollup.config.dev.js",
+    "test": "run-p test:*",
+    "test:lint": "eslint \"./src/**\"",
+    "test:size": "size-limit",
+    "test:unit": "jest --coverage"
+  },
+  
+  "dependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-strip": "^1.3.1",
+    "@size-limit/preset-small-lib": "^2.2.1",
+    "@types/jest": "^24.0.23",
+    "@typescript-eslint/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/parser": "^2.9.0",
+    "eslint": "^6.7.1",
+    "jest": "^24.9.0",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^1.27.2",
+    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-typescript2": "^0.25.2",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.2"
+  }
+}
