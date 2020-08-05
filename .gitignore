@@ -1,6 +1,7 @@
-dist
-dist_dev
+.cache
 coverage
+dist
 .idea
 node_modules
 .vscode
+yarn-error.log
